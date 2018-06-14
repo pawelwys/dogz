@@ -7,13 +7,13 @@ import os
 import re
 from io import open
 from lxml import html
-from urlparse import urlsplit, urlunsplit, urljoin
-import urllib2
+from urllib.parse import urlsplit, urlunsplit, urljoin
+import urllib.request
 
 
 
 def download_file(download_url, todir):
-    response = urllib2.urlopen(download_url)
+    response = urllib.request.urlopen(download_url)
     fn = os.path.join(todir, 'dokument.pdf')
     file = open(fn, 'wb')
     file.write(response.read())

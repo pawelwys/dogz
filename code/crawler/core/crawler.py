@@ -8,8 +8,8 @@ import requests
 import time
 from io import open
 from lxml import html
-from urlparse import urlsplit, urlunsplit
-
+from urllib.parse import urlsplit, urlunsplit
+import urllib.request
 
 def jsonpp(obj):
   return json.dumps(obj, encoding='utf-8', sort_keys=True, indent=2, separators=[',', ': '])
@@ -19,7 +19,7 @@ def jsondump(obj, fn):
   if not os.path.isdir(os.path.dirname(fn)):
     os.makedirs(os.path.dirname(fn))
   with open(fn, 'w', encoding='utf-8') as fp:
-    fp.write(unicode(sj))
+    fp.write(str(sj))
   return fn
 
 
